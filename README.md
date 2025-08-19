@@ -57,7 +57,7 @@ Using \(\Phi\) as a discrete flux, a **small sup-norm** \(\|\Phi\|_\infty\) corr
    On a grid, a simple \(D\) is a **circulation around a plaquette** (closed loop).
 
    > Illustration idea:
-   > `![Closed loop = div 0](images/div0_loop.png)`
+   > ![Closed loop = div 0](https://raw.githubusercontent.com/alessandrogubbiotti/div-Phi-f-with-minimal-infty-norm/main/images/div_free_vector_field.png)
    > *A closed cycle on the graph induces a div-free update; general div-free fields decompose into sums of such cycles.*
 
 3. **Objective:**  
@@ -82,10 +82,10 @@ We track and visualize:
 Example figures:
 
 - Final \(\Phi\):  
-  `![Final |Phi|](images/plot_grad_u_plus_phi.png)`
+  ![Final |Phi|](images/plot_grad_u_plus_phi.png)
 - Sup-norm found during annealing:  
-  `![Sup-norm vs sweeps](images/hist_infty_norms.png)`
-
+  ![Sup-norm vs sweeps](images/hist_infty_norms.png)
+  (There is an abuse of notation and we have used Phi also to denote the difference between $\nabla u$ and $\Phi$)
 ---
 
 ## Building & Running
