@@ -7,7 +7,7 @@ OUTPUT="poisson_mc"
 SRC="poisson_mc.c"
 
 # Compilation command
-gcc -O2 "$SRC" -o "$OUTPUT" -lfftw3 -lm -lgsl -lgslcblas
+gcc -O2 "$SRC" -o "$OUTPUT" -I/opt/local/include -L/opt/local/lib -lfftw3 -lm -lgsl -lgslcblas
 
 # Check compilation result
 if [ $? -eq 0 ]; then
