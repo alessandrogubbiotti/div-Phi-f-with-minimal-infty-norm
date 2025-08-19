@@ -9,7 +9,7 @@
 #define N 30
 #define STEPS 100000000
 #define EPS 0.0000001  // Stddev for Gaussian update
-#define BETA 1000
+#define BETA 10
 #define MAX_SAMPLES (STEPS/1000000)
 // It is interesting to see how EPS must scale with teh larttice size
 
@@ -33,6 +33,15 @@ double compute_max_norm() {
     return maxv;
 }
 
+
+//////////////////////////////////////////////////////////////////////////////////////
+////////////////////////// SOLVE THE POISSON EQUATION ////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+// This function solves the Poisson equation on the gird with periodic boundary conditions
+// It is the only soluiton to div(Phi) = f that is gradient and it has the property 
+// that it minimizes the L^2 norm sum_{x,y} Phi[x][y] among all the Phis solution to 
+// div(Phi ) =  f
+// We will use it as a starting point for our simulated annealing 
 void solve_poisson() {
     fftw_complex *fhat = fftw_malloc(sizeof(fftw_complex)*N*(N/2+1));
     fftw_complex *uhat = fftw_malloc(sizeof(fftw_complex)*N*(N/2+1));
@@ -75,6 +84,17 @@ void compute_grad() {
         uy[i][j] = u[i][jp] - u[i][j];
     }
 }
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+/////////////// THE STEP WHERE WE ADD TO PHI A SMALL DIVERGENCE ZERO FIELD //////////
+//////////////////////////////////////////////////////////////////////////////////////
+// We accept the update using the usual metropolis procedure
+// The more the energy decreases, the more likely 
+// we accept the update
+// Namely, it is not a gradient descent since we can make errors 
+// with probability small in the parameter beta 
 
 void step_mh(int iter) {
     int i = gsl_rng_uniform_int(rng, N);
