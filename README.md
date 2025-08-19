@@ -82,7 +82,7 @@ We track and visualize:
 Example figures:
 
 - Final \(\Phi\):  
-  ![Final |Phi|](images/plot_grad_u_plus_phi.png)
+  ![Final |Phi|](./images/plot_grad_u_plus_phi.png)
 - Sup-norm found during annealing:  
   ![Sup-norm vs sweeps](images/hist_infty_norms.png)
   (There is an abuse of notation and we have used Phi also to denote the difference between $\nabla u$ and $\Phi$)
